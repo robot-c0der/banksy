@@ -1,0 +1,20 @@
+<%= form_with model: @user, url: sign_up_pth do |f| %>
+    <%= render_partial: "shared/form_errors", locals: { object: f.object } %>
+    <div>
+        <%= f.label :name %>
+        <%= f.text_field :name, required: true %>
+    </div>
+    <div>
+        <%= f.label: :email %>
+        <%= f.email_field :email, required: true %>
+    </div>
+    <div>
+        <%= f.label :password %>
+        <%= f.password_field :password, required: true %>
+    </div>
+    <div>
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, required: true %>
+    </div>
+    <%= f.submit "Sign Up" %>
+<% end %>
