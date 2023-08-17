@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-    CONFIRMATION_TOKEN_EXPIRATION = 10.minutes
+    CONFIRMATION_TOKEN_EXPIRATION = 30.minutes
 
     has_secure_password
 
