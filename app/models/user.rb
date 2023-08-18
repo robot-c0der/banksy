@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
     has_secure_password
 
+    before_save :downcase_email
+    
     validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}, presence: true, unique: true
     validates_presence_of :name
 
@@ -21,4 +23,11 @@ class User < ApplicationRecord
     def unconfirmed?
         !confirmed?
     end
+
+    private
+
+    def downcase_email
+        self.email = email.downcase
+    end
+
 end
