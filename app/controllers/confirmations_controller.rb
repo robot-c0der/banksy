@@ -20,7 +20,7 @@ class ConfirmationsController < ApplicationController
             login @user
             redirect_to root_path, notice: "Your account has been confirmed"
         else
-            redirect_to new_confirmation_path, alert: "Invalid token."
+            redirect_to new_confirmation_path, alert: "Something went wrong"
         end
     end
 
