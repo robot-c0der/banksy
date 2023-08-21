@@ -4,7 +4,7 @@ class User < ApplicationRecord
     MAILER_FROM_EMAIL = "no-reply.banksy@ioerror.ca"
 
     # password reset constants
-    PASSWORD_RESET_TOKEN_EXPIRATION = 24.hours
+    PASSWORD_RESET_TOKEN_EXPIRATION = 12.hours
 
 
     has_secure_password
