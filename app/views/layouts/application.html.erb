@@ -10,6 +10,20 @@
   </head>
 
   <body>
+    <% if flash[:notice] %>
+      <div class='notice'>
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class='alert'>
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+    
+    <div id="user_header">
+      <%= link_to "Sign Up", sign_up_path %>
+    </div>
     <%= yield %>
   </body>
 </html>

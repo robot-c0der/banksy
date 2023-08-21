@@ -1,11 +1,11 @@
-<%= form_with model: @user, url: sign_up_pth do |f| %>
-    <%= render_partial: "shared/form_errors", locals: { object: f.object } %>
+<%= form_with model: @user, url: sign_up_path do |f| %>
+    <%= render partial: "shared/form_errors", locals: { object: f.object } %>
     <div>
         <%= f.label :name %>
         <%= f.text_field :name, required: true %>
     </div>
     <div>
-        <%= f.label: :email %>
+        <%= f.label :email %>
         <%= f.email_field :email, required: true %>
     </div>
     <div>
