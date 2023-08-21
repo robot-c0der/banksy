@@ -1,11 +1,11 @@
 class PasswordResetsController < ApplicationController
-    before_action :redirect_if_authenicated
+    before_action :redirect_if_authenticated
 
     def create
         @user = User.find_by(email: params[:user][:email].downcase)
         if @user.present?
             if @user.confirmed?
-                @user.send_confirmation_email!
+                @user.send_password_reset_email!
                 redirect_to login_path, notice: "Password reset email sent"
             else
                 redirect_to new_confirmation_path, alert: "Please confirm your email first"
@@ -16,7 +16,7 @@ class PasswordResetsController < ApplicationController
     end
 
     def edit
-        @user = User.find_signed(params[:pasword_reset_token], purpose: :reset_password)
+        @user = User.find_signed(params[:password_reset_token], purpose: :reset_password)
 
         if @user.present? && @user.unconfirmed?
             redirect_to new_confirmation_path, alert: "You must confirm your email before you can sign in"

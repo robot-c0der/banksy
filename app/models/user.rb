@@ -41,7 +41,7 @@ class User < ApplicationRecord
 
     def send_password_reset_email!
         password_reset_token = generate_password_reset_token
-        UserMail.password_reset(self, password_reset_token).deliver_now
+        UserMailer.password_reset(self, password_reset_token).deliver_now
     end
 
 
