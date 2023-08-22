@@ -1,0 +1,25 @@
+<%= form_with model: @user, url: account_path, method: :put do |f| %>
+    <%= render partial: "shared/form_errors", locals: { object: f.object } %>
+    <div>
+        <%= f.label :email, "Current Email Address" %>
+        <%= f.email_field :email, disabled: true %>
+    </div>
+    <div>
+        <%= f.label :unconfirmed_email, "New Email Address" %>
+        <%= f.email_field :unconfirmed_email %>
+    </div>
+    <div>
+        <%= f.label :password, "Password (leave blank if you don't want to change it)" %>
+        <%= f.password_field :password %>
+    </div>
+    <div>
+        <%= f.label :password_confirmation, "Confirm New Password" %>
+        <%= f.password_field :password_confirmation %>
+    </div>
+    <br />
+    <div>
+        <%= f.label :current_password, "Current Password (required for all changes)" %>
+        <%= f.password_field :current_password, required: true %>
+    </div>
+    <%= f.submit "Update account" %>
+<% end %>
