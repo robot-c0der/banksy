@@ -30,6 +30,7 @@ module Authentication
         cookies.permanent.encrypted[:remember_token] = user.remember_token
     end
 
+
     private
 
     def current_user
@@ -45,7 +46,15 @@ module Authentication
     end
 
     def authenticate_user!
+        #save whatever auth-required page the user was trying to access before we redirected them
+        store_location
         redirect_to login_path, alert: "You mus be logged in to access that page!" unless user_signed_in?
+    end
+
+    def store_location
+        # we only store GET requests and ensure local requests are stored so we don't redirect to
+        # external sites/applications
+        session[:user_return_to] = request.original_url if request.get? && request.local?
     end
 
 end
