@@ -1,4 +1,11 @@
 <%= form_with url: login_path, scope: :user do |f| %>
+    <% if flash.now[:alert].present? %>
+        <div class='alert-error'>
+            Invalid email or password. If you forgot your password<br />
+            <%= link_to "you can reset it here", new_password_reset_path %>
+        </div>
+        <br />
+    <% end %>
     <div>
         <%= f.label :email %>
         <%= f.email_field :email, required: true %>
@@ -6,6 +13,10 @@
     <div>
         <%= f.label :password %>
         <%= f.password_field :password, required: true %>
+    </div>
+    <div>
+        <%= f.label :remember_me %>
+        <%= f.check_box :remember_me %>
     </div>
     <%= f.submit "Sign In" %>
 <% end %>
