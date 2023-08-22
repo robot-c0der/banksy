@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "sign_up", to: "users#new"
   put "account", to: "users#update"
   get "account", to: "users#edit"
+  #delete "account", to "users#destroy"
   resources :confirmations, only: [:create, :edit, :new], param: :confirmation_token
   resources :password_resets, only: [:create, :edit, :new, :update], param: :password_reset_token
 
