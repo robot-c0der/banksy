@@ -7,6 +7,7 @@ class User < ApplicationRecord
     PASSWORD_RESET_TOKEN_EXPIRATION = 12.hours
 
     has_secure_password
+    has_secure_token :remember_token
 
     attr_accessor :current_password
 
