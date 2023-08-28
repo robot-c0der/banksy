@@ -34,7 +34,7 @@
         <h2 class='card-title'>Current Logins</h2>
         <% if @active_sessions.any? %>
             <%= button_to "Log out ALL sessions", destroy_all_active_sessions_path, method: :delete, class: 'btn btn-danger' %>
-            <table class='table table-striped'>
+            <table class='table table-striped md-3'>
                 <thead>
                     <tr>
                         <th scope='col'>User Agent</th>

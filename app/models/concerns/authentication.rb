@@ -38,7 +38,7 @@ module Authentication
         store_location
         redirect_to login_path, alert: "You must be logged in to access that page!" unless user_signed_in?
     end
-    
+        
     private
 
     def current_user

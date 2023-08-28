@@ -11,21 +11,29 @@
   </head>
 
   <body>
-    <% if flash[:notice] %>
-      <div class='notice'>
-        <%= flash[:notice] %>
+    <%= render partial: 'shared/navbar' %>
+    <div class='container-fluid'>
+      <div class='row'>
+        <% if flash[:notice] %>
+          <div class='notice'>
+            <%= flash[:notice] %>
+          </div>
+        <% end %>
+        <% if flash[:alert] %>
+          <div class='alert'>
+            <%= flash[:alert] %>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-    <% if flash[:alert] %>
-      <div class='alert'>
-        <%= flash[:alert] %>
+      <br />
+      <br />
+      <div class='row'>
+        <div class='col'></div>
+        <div class='col-lg-8'>
+          <%= yield %>
+        </div>
+        <div class='col'></div>
       </div>
-    <% end %>
-    
-    <div id="user_header">
-      <%= link_to "Sign Up", sign_up_path %>
     </div>
-    <br />
-    <%= yield %>
   </body>
 </html>
