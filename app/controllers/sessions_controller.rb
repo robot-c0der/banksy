@@ -8,25 +8,23 @@ class SessionsController < ApplicationController
         if @user
             if @user.unconfirmed?
                 redirect_to new_confirmation_path, alert: "Incorrect email or password"
-            elsif @user.authenticate_by(email:params[:user][:password])
+            else
                 # retrieve the path to send the user to
                 after_login_path = session[:user_return_to] || root_path
-                login @user
-                remember(@user) if params[:user][:remember_me] == "1"
+                active_session = login @user
+                remember(active_session) if params[:user][:remember_me] == "1"
                 # redirect the user to where they were before logging in
                 redirect_to after_login_path
-            else
-                flash.now[:alert] = "Incorrect email or password"
-                render :new, status: :unprocessable_entity
             end
         else
-            flash.now[:alert] = "Incorrect email or password"
+            # flash.now[:alert] = "Incorrect email or password"
+            @login_error = true
             render :new, status: :unprocessable_entity
         end
     end
 
     def destroy
-        forget(current_user)
+        forget_active_session
         logout
         redirect_to root_path
     end
