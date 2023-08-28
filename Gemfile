@@ -5,6 +5,7 @@ ruby "3.2.2"
 gem "rails", "~> 7.0.7"
 
 gem 'dotenv-rails', '~> 2.8', '>= 2.8.1'
+
 gem "bcrypt", "~> 3.1.7"
 gem "bootsnap", require: false
 gem "importmap-rails"
@@ -22,10 +23,6 @@ end
 
 group :development do
   gem "web-console"
-  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
-  # gem "rack-mini-profiler"
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
 end
 
 group :test do
@@ -34,6 +31,8 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+
 
 gem "cssbundling-rails", "~> 1.2"
 
