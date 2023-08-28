@@ -1,25 +1,51 @@
-<%= form_with model: @user, url: account_path, method: :put do |f| %>
-    <%= render partial: "shared/form_errors", locals: { object: f.object } %>
-    <div>
-        <%= f.label :email, "Current Email Address" %>
-        <%= f.email_field :email, disabled: true %>
+<div class='card'>
+    <div class='card-body'>
+        <h2 class='card-title'>Update Information</h2>
+        <%= form_with model: @user, url: account_path, method: :put do |f| %>
+            <%= render partial: "shared/form_errors", locals: { object: f.object } %>
+            <div class='md-3'>
+                <%= f.label :email, "Current Email Address", class: 'form-label' %>
+                <%= f.email_field :email, disabled: true %>
+            </div>
+            <div class='md-3'>
+                <%= f.label :unconfirmed_email, "New Email Address", class: 'form-label' %>
+                <%= f.email_field :unconfirmed_email, class: 'form-control' %>
+            </div>
+            <div class='md-3'>
+                <%= f.label :password, "Password (leave blank if you don't want to change it)", class: 'form-label' %>
+                <%= f.password_field :password, class: 'form-control' %>
+            </div>
+            <div class='md-3'>
+                <%= f.label :password_confirmation, "Confirm New Password", class: 'form-label' %>
+                <%= f.password_field :password_confirmation, class: 'form-control' %>
+            </div>
+            <div class='md-3'>
+                <%= f.label :current_password, "Current Password (required for all changes)", class: 'form-label' %>
+                <%= f.password_field :current_password, required: true, class: 'form-control' %>
+            </div>
+            <br />
+            <%= f.submit "Update account" %>
+        <% end %>  
     </div>
-    <div>
-        <%= f.label :unconfirmed_email, "New Email Address" %>
-        <%= f.email_field :unconfirmed_email %>
+</div>
+<br />
+<div class='card'>
+    <div class='card-body'>
+        <h2 class='card-title'>Current Logins</h2>
+        <% if @active_sessions.any? %>
+            <%= button_to "Log out ALL sessions", destroy_all_active_sessions_path, method: :delete, class: 'btn btn-danger' %>
+            <table class='table table-striped'>
+                <thead>
+                    <tr>
+                        <th scope='col'>User Agent</th>
+                        <th scope='col'>IP Address</th>
+                        <th scope='col'>Signed In At</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%= render @active_sessions %>
+                </tbody>
+            </table>
+        <% end %>
     </div>
-    <div>
-        <%= f.label :password, "Password (leave blank if you don't want to change it)" %>
-        <%= f.password_field :password %>
-    </div>
-    <div>
-        <%= f.label :password_confirmation, "Confirm New Password" %>
-        <%= f.password_field :password_confirmation %>
-    </div>
-    <br />
-    <div>
-        <%= f.label :current_password, "Current Password (required for all changes)" %>
-        <%= f.password_field :current_password, required: true %>
-    </div>
-    <%= f.submit "Update account" %>
-<% end %>
+</div>

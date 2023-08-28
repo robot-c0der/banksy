@@ -1,5 +1,5 @@
 class ConfirmationsController < ApplicationController
-    before_action :redirect_if_authenicated, only: [:create, :new]
+    before_action :redirect_if_authenticated, only: [:create, :new]
 
     def create
         @user = User.find_by(email: params[:user][:email].downcase)

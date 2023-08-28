@@ -7,7 +7,8 @@ class User < ApplicationRecord
     PASSWORD_RESET_TOKEN_EXPIRATION = 12.hours
 
     has_secure_password
-    has_secure_token :remember_token
+
+    has_many :active_sessions, dependent: :destroy
 
     attr_accessor :current_password
 
@@ -17,6 +18,7 @@ class User < ApplicationRecord
     validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}, presence: true, uniqueness: true
     validates :unconfirmed_email, format: {with: URI::MailTo::EMAIL_REGEXP, allow_blank: true}
     validates_presence_of :name
+
 
     # THIS WILL BE AVAILABLE IN RAILS 7.1 but this is a copy
     # of the source code at 
