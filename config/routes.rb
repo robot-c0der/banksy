@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
+  
+  
   root to: 'static_pages#home'
 
-  resources :piggybanks
+  resources :piggybanks, only: [:new, :edit, :destroy]
+  post 'piggybanks/new', as: 'create_piggybanks', to: 'piggybanks#create'
+  put 'piggybanks/:id/edit', to: 'piggybanks#update'
+  put 'piggybanks/:id/deposit', to: 'piggybanks#deposit'
+  put 'piggybanks/:id/withdraw', to: 'piggybanks#withdraw'
 
   # User-related routes
   post "sign_up", to: "users#create"
