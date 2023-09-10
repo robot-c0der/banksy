@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
                 redirect_to new_confirmation_path, alert: "Incorrect email or password"
             else
                 # retrieve the path to send the user to
-                after_login_path = session[:user_return_to] || root_path
+                after_login_path = session[:user_return_to] || app_path
                 active_session = login @user
                 remember(active_session) if params[:user][:remember_me] == "1"
                 # redirect the user to where they were before logging in

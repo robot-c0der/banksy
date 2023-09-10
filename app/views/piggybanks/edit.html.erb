@@ -1,0 +1,25 @@
+<div class='card'>
+    <div class='card-body'>
+        <h3 class='card-title'>Edit Goal</h3>
+        <%= form_with model: @goal, url: edit_piggybank_path(@goal), method: :put do |f| %>
+            <%= render partial: "shared/form_errors", locals: { object: f.object } %>
+            <div class='mb-3'>
+                <%= f.label :name, nil, class: 'form-label' %>
+                <%= f.text_field :name, required: true, class: 'form-control' %>
+            </div>
+            <div class='mb-3'>
+                <%= f.label :goal_amount, "Savings Goal", class: 'form-label' %>
+                <%= f.number_field :goal_amount, required: true, step: 0.01, class: 'form-control' %>
+            </div>
+            <div class='mb-3'>
+                <%= f.label :current_amount, nil, class: 'form-label' %>
+                <%= f.number_field :current_amount, step: 0.01, class: 'form-control' %>
+            </div>
+            <%= f.submit 'Update Goal', class: 'btn btn-outline-primary' %>
+            <%= link_to 'Cancel', app_path, class: 'btn btn-outline-danger' %>
+        <% end %>
+        <%= button_to piggybank_path(@goal),method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure? (This can't be undone)"},  class: 'btn btn-danger mt-1' do %>
+            <span class='bi bi-trash3-fill'></span> Delete Goal
+        <% end %>
+    </div>
+</div>

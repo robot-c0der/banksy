@@ -3,9 +3,9 @@
 
     <!-- goals here -->
     <% if @piggybanks.any? %>
-        <button class='btn btn-outline-primary'>
+        <%= link_to new_piggybank_path, class: 'btn btn-outline-primary' do %>
             <span class='bi bi-plus-lg'></span> New Goal
-        </button>
+        <% end %>
         <div class='row'>
             <div class='col-sm-4 mt-2 mb-2'>
             <%= number_to_currency(@total_saved) %> saved of <%= number_to_currency(@total_needed) %> needed
@@ -18,7 +18,7 @@
         <div class='row'>
             <div class='col-12'>
                 You don't have any goals set!<br />
-                <%= link_to new_piggybank_path %>
+                <%= link_to "Create New Goal!", new_piggybank_path %>
             </div>
         </div>
     <% end %>
