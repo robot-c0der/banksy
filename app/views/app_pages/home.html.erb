@@ -1,0 +1,25 @@
+<div class='container-fluid'>
+    <h2>My Goals</h2>
+
+    <!-- goals here -->
+    <% if @piggybanks.any? %>
+        <button class='btn btn-outline-primary'>
+            <span class='bi bi-plus-lg'></span> New Goal
+        </button>
+        <div class='row'>
+            <div class='col-sm-4 mt-2 mb-2'>
+            <%= number_to_currency(@total_saved) %> saved of <%= number_to_currency(@total_needed) %> needed
+            </div>
+        </div>
+        <div class='row'>
+            <%= render @piggybanks %>
+        </div>
+    <% else %>
+        <div class='row'>
+            <div class='col-12'>
+                You don't have any goals set!<br />
+                <%= link_to new_piggybank_path %>
+            </div>
+        </div>
+    <% end %>
+</div>
