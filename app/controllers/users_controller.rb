@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
     before_action :authenticate_user!, only: [:edit, :destroy, :update]
     before_action :redirect_if_authenticated, only: [:create, :new]
-    
+
     def create
         @user = User.new(create_user_params)
         if @user.save
             @user.send_confirmation_email!
-            redirect_to root_path, notice: "Please check your email for confirmation instructions"
+            redirect_to root_path, notice: 'Please check your email for confirmation instructions'
         else
             render :new, status: :unprocessable_entity
         end
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     def destroy
         current_user.destroy
         reset_session
-        redirect_to root_path, notice: "Account deleted"
+        redirect_to root_path, notice: 'Account deleted'
     end
 
     def edit
@@ -35,17 +35,16 @@ class UsersController < ApplicationController
             if @user.update(update_user_params)
                 if params[:unconfirmed_email].present?
                     @user.send_confirmation_email!
-                    flash.now[:notice] = "Check your new email address for confirmation instructions"
-                    render :edit
+                    flash.now[:notice] = 'Check your new email address for confirmation instructions'
                 else
-                    flash.now[:notice] = "Account updated"
-                    render :edit
+                    flash.now[:notice] = 'Account updated'
                 end
+                render :edit
             else
                 render :edit, status: :unprocessable_entity
             end
         else
-            flash.now[:error] = "Incorrect password"
+            flash.now[:error] = 'Incorrect password'
             render :edit, status: :unprocessable_entity
         end
     end
@@ -59,5 +58,4 @@ class UsersController < ApplicationController
     def update_user_params
         params.require(:user).permit(:current_password, :password, :password_confirmation, :unconfirmed_email)
     end
-
 end

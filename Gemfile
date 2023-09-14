@@ -8,8 +8,10 @@ gem 'dotenv-rails', '~> 2.8', '>= 2.8.1'
 
 gem "bcrypt", "~> 3.1.7"
 gem "bootsnap", require: false
+gem "cssbundling-rails", "~> 1.2"
 gem "importmap-rails"
 gem "jbuilder"
+gem "jsbundling-rails", "~> 1.1"
 gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"
 gem 'rubocop', '~> 1.56', require: false
@@ -35,6 +37,4 @@ end
 
 
 
-gem "cssbundling-rails", "~> 1.2"
 
-gem "jsbundling-rails", "~> 1.1"
