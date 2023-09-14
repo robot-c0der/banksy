@@ -1,7 +1,7 @@
 <tr>
     <td>        
         <%= active_session.user_agent %>
-        <% if active_session.id = session[:current_active_session_id] %>
+        <% if active_session.id == session[:current_active_session_id] %>
             (This Device)
         <% end %>
     </td>
