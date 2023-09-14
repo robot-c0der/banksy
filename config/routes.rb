@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   resources :piggybanks, only: [:new, :edit, :destroy]
   post 'piggybanks/new', as: 'create_piggybanks', to: 'piggybanks#create'
   put 'piggybanks/:id/edit', to: 'piggybanks#update'
-  put 'piggybanks/:id/deposit', to: 'piggybanks#deposit'
-  put 'piggybanks/:id/withdraw', to: 'piggybanks#withdraw'
+  put 'piggybanks/:id/deposit', as: 'piggybank_deposit', to: 'piggybanks#deposit'
+  put 'piggybanks/:id/withdraw', as: 'piggybank_withdraw', to: 'piggybanks#withdraw'
 
   # User-related routes
   post "sign_up", to: "users#create"
