@@ -1,7 +1,7 @@
 <div class='container-fluid'>
     <h2>My Goals</h2>
 
-    <% if @piggybanks.any? %>
+    <% if @piggybanks %>
         <%= link_to new_piggybank_path, class: 'btn btn-outline-primary' do %>
             <span class='bi bi-plus-lg'></span> New Goal
         <% end %>

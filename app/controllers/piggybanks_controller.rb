@@ -1,6 +1,8 @@
 class PiggybanksController < ApplicationController
   
   before_action :authenticate_user!
+
+  before_action :check_user_is_owner, only: [:edit, :update, :destroy, :deposit, :withdraw]
   
   def new
     @goal = Piggybank.new
@@ -64,7 +66,13 @@ class PiggybanksController < ApplicationController
   end
   
   private
-  
+  def check_user_is_owner
+    goal = Piggybank.find(params[:id])
+    if current_user != goal.user
+      redirect_to app_path, error: "You can't access that page", status: :unauthorized
+    end
+  end
+
   def goal_params
     params.require(:piggybank).permit(:name, :current_amount, :goal_amount)
   end
