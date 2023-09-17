@@ -8,6 +8,7 @@ gem 'dotenv-rails', '~> 2.8', '>= 2.8.1'
 
 gem "bcrypt", "~> 3.1.7"
 gem "bootsnap", require: false
+
 gem "cssbundling-rails", "~> 1.2"
 gem "importmap-rails"
 gem "jbuilder"
@@ -26,6 +27,13 @@ end
 
 group :development do
   gem "web-console"
+  
+  gem "capistrano", "~> 3.11", require: false
+  gem "capistrano-rails", "~> 1.4"
+  gem "capistrano-passenger", "~> 0.2.0"
+  gem "capistrano-rbenv", "~> 2.1", ">= 2.1.4"
+  gem "ed25519", "~> 1.3"
+  gem 'bcrypt_pbkdf', '~> 1.1'
 end
 
 group :test do
