@@ -1,7 +1,7 @@
 class User < ApplicationRecord
     # email confirmation constants
     CONFIRMATION_TOKEN_EXPIRATION = 30.minutes
-    MAILER_FROM_EMAIL = "no-reply.banksy@ioerror.ca"
+    MAILER_FROM_EMAIL = "no-reply@#{ENV['PUBLIC_BASE_URL']{"localhost"}}"
 
     # password reset constants
     PASSWORD_RESET_TOKEN_EXPIRATION = 12.hours
