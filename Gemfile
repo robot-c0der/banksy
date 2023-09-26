@@ -14,7 +14,7 @@ gem "importmap-rails"
 gem "jbuilder"
 gem "jsbundling-rails", "~> 1.1"
 gem "pg", "~> 1.1"
-gem "puma", "~> 5.0"
+gem "puma", "~> 5.6"
 gem 'rubocop', '~> 1.56', require: false
 gem "sprockets-rails"
 gem "stimulus-rails"
