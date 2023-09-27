@@ -2,10 +2,10 @@
 lock "~> 3.17.3"
 
 set :application, "banksy"
-set :repo_url, "git@gitlab.com:exyy/banksy.git"
+set :repo_url, "#{ENV['CAP_DEPLOY_REPO']}"
 
 # Deploy to user's home directory
-set :deploy_to, "/home/autodep/#{fetch :application}"
+set :deploy_to, "#{ENV['CAP_DEPLOY_PATH']}/#{fetch :application}"
 
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets',
 'vendor/bundle', '.bundle', 'public/system'
