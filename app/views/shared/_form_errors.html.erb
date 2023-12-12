@@ -1,9 +1,0 @@
-<% if object.errors.any? %>
-    <div class='card text-bg-danger'>
-        <ul class='list-group list-group-flush '>
-            <% object.errors.full_messages.each do |message| %>
-                <li class='list-group-item'><%= message %></li>
-            <% end %>
-        </ul>
-    </div>
-<% end %>
