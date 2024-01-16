@@ -74,7 +74,7 @@ class PiggybanksController < ApplicationController
   end
 
   def goal_params
-    params.require(:piggybank).permit(:name, :current_amount, :goal_amount)
+    params.require(:piggybank).permit(:name, :current_amount, :goal_amount, :exclude_from_totals)
   end
   
   def amount_params

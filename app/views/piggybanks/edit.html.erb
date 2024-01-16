@@ -11,6 +11,11 @@
                 <%= f.label :goal_amount, "Savings Goal", class: 'form-label' %>
                 <%= f.number_field :goal_amount, required: true, step: 0.01, class: 'form-control' %>
             </div>
+            <div class='mb-3'>
+                <%= f.check_box :exclude_from_totals %>
+                <%= f.label :exclude_from_totals, "Exclude from Totals? ", class: 'form-label' %>
+            </div>
+
             <%= f.submit 'Update Piggybank', class: 'btn btn-outline-primary' %>
             <%= link_to 'Cancel', app_path, class: 'btn btn-outline-danger' %>
         <% end %>
