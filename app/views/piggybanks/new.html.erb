@@ -15,6 +15,10 @@
                 <%= f.label :current_amount, "Starting Amount: ", class: 'form-label' %>
                 <%= f.number_field :current_amount, step: 0.01, class: 'form-control' %>
             </div>
+            <div class='mb-3'>
+                <%= f.check_box :exclude_from_totals %>
+                <%= f.label :exclude_from_totals, "Exclude from Totals? ", class: 'form-label' %>
+            </div>
             <%= f.submit 'Save Goal', class: 'btn btn-outline-primary' %>
             <%= link_to 'Cancel', app_path, class: 'btn btn-outline-danger' %>
         <% end %>
