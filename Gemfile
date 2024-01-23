@@ -13,11 +13,8 @@ gem 'bootstrap', '~> 5.3.2'
 gem 'dartsass-rails'
 gem 'dartsass-sprockets'
 gem "importmap-rails"
-# gem "jbuilder"
-# gem "jsbundling-rails", "~> 1.1"
 gem 'pg', '~> 1.5', '>= 1.5.4'
 gem "puma", "~> 6.4", '>= 6.4.2'
-# gem 'rubocop', '~> 1.56', require: false
 gem "sprockets-rails"
 gem "stimulus-rails"
 gem "turbo-rails"
