@@ -2,7 +2,7 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.2.2"
-gem "rails", "~> 7.0.7"
+gem "rails", "~> 7.1.2"
 
 gem 'dotenv-rails', '~> 2.8', '>= 2.8.1'
 
@@ -14,7 +14,7 @@ gem "importmap-rails"
 gem "jbuilder"
 gem "jsbundling-rails", "~> 1.1"
 gem "pg", "~> 1.1"
-gem "puma", "~> 5.6"
+gem "puma", "~> 6.4", '>= 6.4.2'
 # gem 'rubocop', '~> 1.56', require: false
 gem "sprockets-rails"
 gem "stimulus-rails"
