@@ -27,32 +27,18 @@ export function setupSwitcher() {
     
     setTheme(getPreferredTheme())
     
-    const showActiveTheme = (theme, focus = false) => {
-        const themeSwitcher = document.querySelector('#bd-theme')
+    const showActiveTheme = (theme, focus = false) =>
+    {
+        const options = document.querySelectorAll('#theme_selector>option')
         
-        if (!themeSwitcher) {
+        if (!options)
             return
-        }
-        
-        const themeSwitcherText = document.querySelector('#bd-theme-text')
-        const activeThemeIcon = document.querySelector('.theme-icon-active use')
-        const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
-        const svgOfActiveBtn = btnToActive.querySelector('svg use').getAttribute('href')
-        
-        document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
-            element.classList.remove('active')
-            element.setAttribute('aria-pressed', 'false')
-        })
-        
-        btnToActive.classList.add('active')
-        btnToActive.setAttribute('aria-pressed', 'true')
-        activeThemeIcon.setAttribute('href', svgOfActiveBtn)
-        const themeSwitcherLabel = `${themeSwitcherText.textContent} (${btnToActive.dataset.bsThemeValue})`
-        themeSwitcher.setAttribute('aria-label', themeSwitcherLabel)
-        
-        if (focus) {
-            themeSwitcher.focus()
-        }
+
+        options.forEach((el) =>
+        {
+            if (el.value == theme)
+                el.setAttribute('selected', '');
+        });
     }
     
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
@@ -63,17 +49,25 @@ export function setupSwitcher() {
     })
     
     window.addEventListener('DOMContentLoaded', () => {
-        showActiveTheme(getPreferredTheme())
-        
-        document.querySelectorAll('[data-bs-theme-value]')
-        .forEach(toggle => {
-            toggle.addEventListener('click', () => {
-                const theme = toggle.getAttribute('data-bs-theme-value')
-                setStoredTheme(theme)
-                setTheme(theme)
-                showActiveTheme(theme, true)
-            })
-        })
+        // showActiveTheme(getPreferredTheme())
+        if (document.getElementById('theme_selector'))
+        {
+            // try to make the theme selector show the correct setting
+            showActiveTheme(getStoredTheme());
+
+            document.getElementById('theme_selector').addEventListener('change', (e) => 
+            {
+                const chosenTheme = e.target.value.toLowerCase();
+                const validThemes = ['light', 'dark', 'auto'];
+
+                if (validThemes.indexOf(chosenTheme) != -1)
+                {
+                    setStoredTheme(chosenTheme);
+                    setTheme(chosenTheme);
+                }
+
+            });
+        }
         
         window.switcherSetup = true;
     })
