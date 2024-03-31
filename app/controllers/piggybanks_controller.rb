@@ -43,8 +43,9 @@ class PiggybanksController < ApplicationController
     goal = Piggybank.find(params[:id])
     amount_to_add = amount_params[:amount].to_d
     
-    if amount_to_add > (goal.goal_amount - goal.current_amount)
-      redirect_to app_path, status: :bad_request
+    if (goal.current_amount + amount_to_add) > goal.goal_amount
+      redirect_to app_path, alert: "You cannot add that much to the piggybank! Try a smaller amount"
+      return
     end
     
     goal.current_amount = goal.current_amount + amount_to_add
@@ -56,9 +57,11 @@ class PiggybanksController < ApplicationController
     goal = Piggybank.find(params[:id])
     amount_to_remove = amount_params[:amount].to_d
     
-    if amount_to_remove > goal.current_amount
-      redirect_to app_path, status: :bad_request
+    if (amount_to_remove > goal.current_amount)
+      redirect_to app_path, alert: "You cannot take that much out! Try removing a smaller amount"
+      return
     end
+
     goal.current_amount = goal.current_amount - amount_to_remove
     goal.save
     

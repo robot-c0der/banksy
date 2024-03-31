@@ -16,12 +16,12 @@
     <div class='container-fluid'>
       <div class='row'>
         <% if flash[:notice] %>
-          <div class='notice'>
+          <div class='notice alert-info w-75 m-auto'>
             <%= flash[:notice] %>
           </div>
         <% end %>
         <% if flash[:alert] %>
-          <div class='alert'>
+          <div class='alert alert-danger w-75 m-auto'>
             <%= flash[:alert] %>
           </div>
         <% end %>
