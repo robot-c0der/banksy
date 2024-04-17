@@ -2,7 +2,7 @@ class PiggybanksController < ApplicationController
   
   before_action :authenticate_user!
 
-  before_action :check_user_is_owner, only: [:edit, :update, :destroy, :deposit, :withdraw]
+  before_action :check_user_is_owner, only: [:edit, :update, :destroy, :deposit, :withdraw, :restore_goal]
   
   def new
     @goal = Piggybank.new
@@ -20,11 +20,11 @@ class PiggybanksController < ApplicationController
   end
   
   def edit
-    @goal = Piggybank.find(params[:id])
+    @goal = Piggybank.find(params[:id].to_i)
   end
   
   def update
-    @goal = Piggybank.find(params[:id])
+    @goal = Piggybank.find(params[:id].to_i)
     
     if @goal.update(goal_params)
       redirect_to app_path, success: "Goal Updated"
@@ -34,13 +34,14 @@ class PiggybanksController < ApplicationController
   end
   
   def destroy
-    goal = Piggybank.find(params[:id])
-    goal.destroy
+    goal = Piggybank.find(params[:id].to_i)
+    goal.deleted = true
+    goal.save
     redirect_to app_path, notice: "Goal deleted"
   end
   
   def deposit
-    goal = Piggybank.find(params[:id])
+    goal = Piggybank.find(params[:id].to_i)
     amount_to_add = amount_params[:amount].to_d
     
     if (goal.current_amount + amount_to_add) > goal.goal_amount
@@ -54,7 +55,7 @@ class PiggybanksController < ApplicationController
   end
   
   def withdraw
-    goal = Piggybank.find(params[:id])
+    goal = Piggybank.find(params[:id].to_i)
     amount_to_remove = amount_params[:amount].to_d
     
     if (amount_to_remove > goal.current_amount)
@@ -67,10 +68,29 @@ class PiggybanksController < ApplicationController
     
     redirect_to app_path
   end
+
+  def restore
+    @deleted_piggybanks = current_user.piggybanks.where(deleted: true, updated_at: (Date.today - 30.days).. ).order(:updated_at)
+  end
+
+  def restore_goal
+    goal = Piggybank.find(params[:id].to_i)
+    
+    if goal
+      goal.deleted = false
+      if goal.save
+        redirect_to app_path, notice: "Goal restored!"
+        return
+      end
+    end
+
+    redirect_to app_path, notice: "There was an issue when restoring that Goal, please try again"
+  end
   
   private
   def check_user_is_owner
-    goal = Piggybank.find(params[:id])
+
+    goal = Piggybank.find(params[:id].to_i)
     if current_user != goal.user
       redirect_to app_path, error: "You can't access that page", status: :unauthorized
     end

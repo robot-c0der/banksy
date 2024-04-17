@@ -46,6 +46,13 @@
                                     <span class='bi bi-pencil'></span> Edit Account
                                 <% end %>
                             </li>
+                            <% if Current.user.piggybanks.where(deleted: true).count > 0 %>
+                                <li>
+                                    <a href='/piggybanks/restore' class='dropdown-item'>
+                                        <span class='bi bi-trash'></span> Restore Deleted Goals
+                                    </a>
+                                </li>
+                            <% end %>
                             <li><hr class='dropdown-divider' /></li>
                             <li>
                                 <%= link_to logout_path, class: 'dropdown-item' do %>

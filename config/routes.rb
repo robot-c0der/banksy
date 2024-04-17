@@ -3,11 +3,14 @@ Rails.application.routes.draw do
   
   root to: 'static_pages#home'
 
+  # Piggybank-related routes
   resources :piggybanks, only: [:new, :edit, :destroy]
+  get 'piggybanks/restore', as: 'show_deleted_piggybanks', to: 'piggybanks#restore'
   post 'piggybanks/new', as: 'create_piggybanks', to: 'piggybanks#create'
   put 'piggybanks/:id/edit', to: 'piggybanks#update'
   put 'piggybanks/:id/deposit', as: 'piggybank_deposit', to: 'piggybanks#deposit'
   put 'piggybanks/:id/withdraw', as: 'piggybank_withdraw', to: 'piggybanks#withdraw'
+  put 'piggybanks/:id/restore', as: 'restore_piggybank', to: 'piggybanks#restore_goal'
 
   # User-related routes
   post "sign_up", to: "users#create"
