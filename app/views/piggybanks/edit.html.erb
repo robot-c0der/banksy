@@ -19,7 +19,7 @@
             <%= f.submit 'Update Piggybank', class: 'btn btn-outline-primary' %>
             <%= link_to 'Cancel', app_path, class: 'btn btn-outline-danger' %>
         <% end %>
-        <%= button_to piggybank_path(@goal),method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure? (This can't be undone)"},  class: 'btn btn-danger mt-1' do %>
+        <%= button_to piggybank_path(@goal), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure? (You can restore this for 30 days)"},  class: 'btn btn-danger mt-1' do %>
             <span class='bi bi-trash3-fill'></span> Delete Piggybank
         <% end %>
     </div>
