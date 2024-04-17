@@ -33,6 +33,7 @@ group :development do
   gem "capistrano-rbenv", "~> 2.1", ">= 2.1.4"
   gem "ed25519", "~> 1.3"
   gem 'bcrypt_pbkdf', '~> 1.1'
+  gem 'brakeman', '~> 6.1', '>= 6.1.2'
 end
 
 group :test do
