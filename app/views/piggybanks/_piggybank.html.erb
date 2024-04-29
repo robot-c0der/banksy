@@ -28,6 +28,12 @@
             >
                 <div class='progress-bar progress-bar-striped bg-success' style='width: <%= piggybank.current_percent %>%'><%= piggybank.current_percent %>%</div>
             </div>
+            <% if piggybank.most_recent_transaction != 0 %>
+            <span class='small text-secondary'> <!-- make this small and light, it's not a main UI element -->
+                Most recent amount <%= (piggybank.most_recent_transaction > 0) ? 'added' : 'removed' %>: 
+                <%= number_to_currency(piggybank.most_recent_transaction) %>
+            </span>
+            <% end %>
         </div>
     </div>
 </div>
