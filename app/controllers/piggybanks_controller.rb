@@ -50,6 +50,7 @@ class PiggybanksController < ApplicationController
     end
     
     goal.current_amount = goal.current_amount + amount_to_add
+    goal.most_recent_transaction = amount_to_add
     goal.save
     redirect_to app_path
   end
@@ -64,6 +65,7 @@ class PiggybanksController < ApplicationController
     end
 
     goal.current_amount = goal.current_amount - amount_to_remove
+    goal.most_recent_transaction = -(amount_to_remove)
     goal.save
     
     redirect_to app_path
