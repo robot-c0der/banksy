@@ -14,7 +14,7 @@ gem 'dartsass-rails'
 gem 'dartsass-sprockets'
 gem "importmap-rails"
 gem 'pg', '~> 1.5', '>= 1.5.4'
-gem "puma", "~> 6.4", '>= 6.4.2'
+gem "puma", "~> 6.4"
 gem "sprockets-rails"
 gem "stimulus-rails"
 gem "turbo-rails"
