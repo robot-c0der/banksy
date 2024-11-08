@@ -6,7 +6,7 @@ from Firefly I was using and it didn't make any sense to have the whole thing ru
 just have the little bit I needed.
 
 
-## Hosting Requirements
+## Requirements
 - [Ruby](https://ruby-lang.org) 3.2.2
 - [Rails 7](https://rubyonrails.org)
 - [Postgresql](postgresql.org/) or some other database (just make sure to update the database.yml file)
@@ -21,7 +21,7 @@ the rails server running in production mode and then point your webserver at it.
 to whatever server you're running it on.
 
 ### Setup
-1. Following the [Go Rails](https://gorails.com/deploy/ubuntu/22.04#ruby) guide, install nodejs, rbenv, ruby-build, ruby, nginx, and Passenger on your webserver (you can skip installing Redis though, this project doesn't use it).
+1. You will need to have nodejs, rbenv, ruby-build, ruby, nginx, and Passenger installed on your webserver.
 2. On your server in the home directory of the deploy user run `mkdir banksy`
 3. Still on your server, `cd` into the banksy directory you just made, and create and edit the file `.rbenv-vars` with your favourite editor. You can use `dotenv.example` as a template
 On your **local machine** after cloning the repo locally, setup Capistrano for deploying:
@@ -34,6 +34,5 @@ Hopefully this is relatively straightforward to setup/deploy but if not i'll do 
 guide I linked above so honestly that's probably your best bet if you run into any issues deploying it via Capistrano.
 
 ### Other Bits/Attribution:
-- The User registration/confirmation/session system is taken from Steve Polito's excellent [Rails Authentication From Scratch](https://stevepolito.design/blog/rails-authentication-from-scratch) because it the first/nicest walkthrough I could find that wasn't about 10 years out of date (love you Railscasts but that code 
-definitely doesn't work anymore.. at least none of the code I could find)
+- The User registration/confirmation/session system is taken from Steve Polito's excellent [Rails Authentication From Scratch](https://stevepolito.design/blog/rails-authentication-from-scratch) because it the first/nicest walkthrough I could find that wasn't about 10 years out of date
 - Firefly III is a nice accounting/budgeting app if you need a whole setup, I just don't and found myself dreading the data entry to keep it up to date

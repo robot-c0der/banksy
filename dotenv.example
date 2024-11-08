@@ -20,6 +20,7 @@ PUBLIC_BASE_URL=banksy.yourawesomedomain.com
 CAP_DEPLOY_SERVER_IP=127.0.0.1
 CAP_DEPLOY_PATH=/path/to/where/you/are/deploying/banksy
 CAP_DEPLOY_REPO=git@github.com:robot-c0der/banksy.git
+## MAKE SURE TO UPDATE THIS USERNAME TO WHATEVER YOUR DEPLOY USER IS
 CAP_DEPLOY_USER=deploy
 DEPLOY_SSH_KEY_PATH="/home/deploy/.ssh/id_rsa"
 
