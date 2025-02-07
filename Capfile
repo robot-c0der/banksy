@@ -16,7 +16,7 @@ require "capistrano/passenger"
 require 'dotenv/load'
 
 set :rbenv_type, :user
-set :rbenv_ruby, '3.2.2'
+set :rbenv_ruby, '3.4.1'
 
 set :passenger_restart_with_touch, true
 
