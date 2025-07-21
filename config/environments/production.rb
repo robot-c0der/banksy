@@ -93,6 +93,10 @@ Rails.application.configure do
     ssl: (ENV['SMTP_SSL'].eql? "true")
   }
 
+  config.action_mailer.default_url_options = {
+    :host => 'banksy.ioerror.ca'
+  }
+
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
