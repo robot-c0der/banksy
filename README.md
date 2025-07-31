@@ -1,13 +1,13 @@
 # BANKSY
 
 This is small project taking the Piggy banks from [Firefly III](https://github.com/firefly-iii/firefly-iii) 
-and paring it to its minimum functionality. Why? Because I wanted to see if i could and it was the only feature
+and paring it down to its minimum functionality. Why? Because I wanted to see if i could and it was the only feature
 from Firefly I was using and it didn't make any sense to have the whole thing running on my server when I could
 just have the little bit I needed.
 
 
 ## Requirements
-- [Ruby](https://ruby-lang.org) 3.2.2
+- [Ruby](https://ruby-lang.org) 3.4
 - [Rails 7](https://rubyonrails.org)
 - [Postgresql](postgresql.org/) or some other database (just make sure to update the database.yml file)
 - [Phusion Passenger](https://phusionpassenger.com)
@@ -30,9 +30,9 @@ On your **local machine** after cloning the repo locally, setup Capistrano for d
 6. Run `cap production deploy` if you're using Capistrano to deploy and hopefully everything should run and you'll now have a functioning instance of Banksy on your server!
 
 ### Questions?
-Hopefully this is relatively straightforward to setup/deploy but if not i'll do my best to try and help where i can. The deploy setup was basically done by following the Go Rails
-guide I linked above so honestly that's probably your best bet if you run into any issues deploying it via Capistrano.
+Hopefully this is relatively straightforward to setup/deploy but if not i'll do my best to try and help where i can. The deploy setup was basically done by following the Go Rails guide honestly that's probably your best bet if you run into any issues deploying it via Capistrano.
 
 ### Other Bits/Attribution:
 - The User registration/confirmation/session system is taken from Steve Polito's excellent [Rails Authentication From Scratch](https://stevepolito.design/blog/rails-authentication-from-scratch) because it the first/nicest walkthrough I could find that wasn't about 10 years out of date
 - Firefly III is a nice accounting/budgeting app if you need a whole setup, I just don't and found myself dreading the data entry to keep it up to date
+- The darkmode switching is taken from Bootstrap's docs for a darkmode switcher
