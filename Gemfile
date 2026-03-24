@@ -6,7 +6,7 @@ gem "rails", "~> 8.1.2"
 
 gem 'dotenv-rails', '~> 2.8', '>= 2.8.1'
 
-gem "bcrypt", "~> 3.1.7"
+gem "bcrypt", "~> 3.1.22"
 gem "bootsnap", require: false
 
 gem 'bootstrap', '~> 5.3.2'
