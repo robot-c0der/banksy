@@ -8,7 +8,7 @@ just have the little bit I needed.
 
 ## Requirements
 - [Ruby](https://ruby-lang.org) 3.4
-- [Rails 7](https://rubyonrails.org)
+- [Rails 8](https://rubyonrails.org)
 - [Postgresql](postgresql.org/) or some other database (just make sure to update the database.yml file)
 - [Phusion Passenger](https://phusionpassenger.com)
 - [Nodejs](https://nodejs.org)
